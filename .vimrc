@@ -44,10 +44,10 @@ set hlsearch
 "FOLDING
 
 "Enable folding
-set foldenable
+"set foldenable
 
 "Let syntax handle folding
-set foldmethod=syntax
+"set foldmethod=syntax
 
 "Space open/closes folds
 nnoremap <space> za
@@ -67,7 +67,7 @@ nnoremap gV `[v`]
 nnoremap <leader>u :GundoToggle<CR>
 
 "CSCOPE
-source /home/dan/.vim/cscope_maps.vim
+source $HOME/.vim/cscope_maps.vim
 
 "Path to directory where library can be found
 "let g:clang_library_path='/usr/lib/llvm-3.8/lib'
