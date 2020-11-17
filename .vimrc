@@ -80,7 +80,7 @@ set omnifunc=syntaxcomplete#Complete
 
 " Per-filetype settings
 autocmd FileType java		setlocal tw=78 cin foldmethod=marker
-autocmd FileType c,cpp		setlocal tw=72 cindent noexpandtab
+autocmd FileType c,cpp		setlocal tw=72 cindent noexpandtab shiftwidth=4
 autocmd FileType python		setlocal autoindent expandtab sts=4 sw=4 tw=78
 autocmd FileType sh		setlocal sts=4 sw=4 si et
 
@@ -123,3 +123,31 @@ set updatetime=250
 
 "GitGutter supress itself if it has more dan <number> changes
 let g:gitgutter_max_signs = 500  " default value
+
+
+"autocmd VimEnter * NERDTree
+"
+"NERDTree ignore
+let NERDTreeIgnore = ['\.o$']
+
+"Enable mouse (shift to ignore)
+set mouse=a
+set completeopt-=preview
+map <F9> :YcmCompleter FixIt<CR>
+
+
+
+" DokuWiki
+" looks for DokuWiki headlines in the first 20 lines
+" of the current buffer
+fun IsDokuWiki()
+  if match(getline(1,20),'^ \=\(=\{2,6}\).\+\1 *$') >= 0
+    set textwidth=0
+    set wrap
+    set linebreak
+    set filetype=dokuwiki
+  endif
+endfun
+
+" check for dokuwiki syntax
+autocmd BufWinEnter *.txt call IsDokuWiki()
