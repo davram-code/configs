@@ -51,7 +51,7 @@ ZSH_THEME="daveverwer"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,3 +84,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="vim -O"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.zshInsulter/zsh.command-not-found ]; then
+    . ~/.zshInsulter/zsh.command-not-found
+fi
+
+export PATH=$PATH:/snap/bin
+
+function vim_open()
+{
+	for i in $*
+	do
+		if [[ $i =~ ".sh$" && ! -f $i ]]
+		then
+			touch $i
+			chmod +x $i
+			vim $*
+		else
+			vim $*
+		fi
+	done
+
+}
+
+alias vim="vim_open"
+
+
