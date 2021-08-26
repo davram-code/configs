@@ -1,0 +1,17 @@
+#/bin/bash
+
+
+# Author Dan Avram
+
+# Used to switch between us an ro keyboard layouts
+
+current=$(setxkbmap -query | grep layout |tr -s " " | cut -f2 -d" ")
+
+if [[ $current == "ro" ]]
+then
+	setxkbmap -layout us
+else
+	setxkbmap -layout ro -variant std
+fi
+
+pkill -SIGRTMIN+10 i3blocks
