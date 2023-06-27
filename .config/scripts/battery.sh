@@ -9,6 +9,8 @@ echo "Battery: $BAT"
 echo "BAT: $BAT"
 
 # Set urgent flag below 5% or use orange below 20%
+
+[ ${BAT%?} -gt 20 ] && echo "#FFD700"
 [ ${BAT%?} -le 5 ] && exit 33
 [ ${BAT%?} -le 20 ] && echo "#FF8000"
 

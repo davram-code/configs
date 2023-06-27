@@ -1,5 +1,6 @@
 [Alsa]
-card=default
+card=sof-hda-dsp
+channel=Master
 
 [Notification]
 show_notification=true
